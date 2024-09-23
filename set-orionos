@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Set the Orion OS version! 
+# I hope you enjoy it! <3
+# This script is part of the Orion OS project! <3
+
+
+echo "Wold you like to continue with the installation of Orion OS 1.0? (y, n)"
+
+
+read option
+
+if [ $option == "y" ]; then
+    echo "Ok! Let's continue!"
+    echo "Setting the Orion OS version..."
+    
+    cat << "EOF"
+     ~+
+
+                 *       +
+           '                  |
+       ()    .-.,="``"=.    - o -
+             '=/_       \     |
+          *   |  '=._    |
+               \     `=./`,        '
+            .   '=.__.=' `='      *
+   +                         +
+        O      *        '       .
+                 .
+EOF
+echo "Install git..."
+
+sudo pacman -S git --noconfirm
+
+echo "Install yay..."
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si --noconfirm
+
+cd ..
+
+echo "Install hyprland..."
+
+yay -S hyprland-git --noconfirm
+
+# echo "Install rust..."
+# echo "Install cargo..."
+
+# sudo pacman -S rust cargo --noconfirm
+
+# echo "Install ewww..."
+
+# git clone https://github.com/elkowar/eww
+
+# cd eww
+
+# cargo build --release --no-default-features --features=wayland
+
+elif [ $option == "n" ]; then
+    echo "Ok! Goodbye!"
+    exit
+else
+    echo "Invalid option!"
+fi
+

@@ -45,18 +45,17 @@ echo "Install hyprland..."
 
 yay -S hyprland-git --noconfirm
 
-# echo "Install rust..."
-# echo "Install cargo..."
+echo "Install Astal..."
 
-# sudo pacman -S rust cargo --noconfirm
+yay -S libastal-git --noconfirm
 
-# echo "Install ewww..."
+git clone https://github.com/aylur/astal.git
+cd astal/core
 
-# git clone https://github.com/elkowar/eww
+sudo pacman -Syu meson vala gtk3 gtk-layer-shell gobject-introspection --nocofirm
 
-# cd eww
-
-# cargo build --release --no-default-features --features=wayland
+meson setup build
+meson install -C build
 
 elif [ $option == "n" ]; then
     echo "Ok! Goodbye!"
